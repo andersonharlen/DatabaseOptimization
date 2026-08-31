@@ -1,0 +1,4 @@
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\obj\Debug\net9.0\DatabaseOptimization.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\obj\Debug\net9.0\DatabaseOptimization.Domain.AssemblyInfoInputs.cache
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\obj\Debug\net9.0\DatabaseOptimization.Domain.AssemblyInfo.cs
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\obj\Debug\net9.0\DatabaseOptimization.Domain.csproj.CoreCompileInputs.cache

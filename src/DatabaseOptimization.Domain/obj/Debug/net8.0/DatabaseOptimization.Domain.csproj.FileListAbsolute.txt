@@ -1,0 +1,12 @@
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\bin\Debug\net8.0\DatabaseOptimization.Domain.deps.json
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\bin\Debug\net8.0\DatabaseOptimization.Domain.dll
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\bin\Debug\net8.0\DatabaseOptimization.Domain.pdb
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\obj\Debug\net8.0\DatabaseOptimization.Domain.csproj.AssemblyReference.cache
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\obj\Debug\net8.0\DatabaseOptimization.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\obj\Debug\net8.0\DatabaseOptimization.Domain.AssemblyInfoInputs.cache
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\obj\Debug\net8.0\DatabaseOptimization.Domain.AssemblyInfo.cs
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\obj\Debug\net8.0\DatabaseOptimization.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\obj\Debug\net8.0\DatabaseOptimization.Domain.dll
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\obj\Debug\net8.0\refint\DatabaseOptimization.Domain.dll
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\obj\Debug\net8.0\DatabaseOptimization.Domain.pdb
+C:\Users\ander\Desktop\DatabaseOptimization\src\DatabaseOptimization.Domain\obj\Debug\net8.0\ref\DatabaseOptimization.Domain.dll
