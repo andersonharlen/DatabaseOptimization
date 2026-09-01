@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class PerformanceService {
-  private readonly apiUrl = environment.apiUrl;
+  private readonly baseUrl = 'https://databaseoptimization.onrender.com/api/performance';
 
   constructor(private http: HttpClient) { }
 
