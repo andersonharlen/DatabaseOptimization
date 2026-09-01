@@ -6,8 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PerformanceService {
-  // Ajuste a porta conforme a URL que sua API .NET estiver rodando (ex: https://localhost:5001 ou http://localhost:5000)
-  private apiUrl = 'http://localhost:5007/api/performance';
+  private apiUrl = 'https://databaseoptimization.onrender.com/api/performance';
 
   constructor(private http: HttpClient) { }
 
