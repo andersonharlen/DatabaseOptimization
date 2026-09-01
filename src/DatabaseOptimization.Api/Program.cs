@@ -29,6 +29,15 @@ if (string.IsNullOrWhiteSpace(connectionString))
                        ?? "Host=localhost;Port=5432;Database=performance_db;Username=postgres;Password=password123";
 }
 
+// Converte a URL do Neon (postgresql://...) para o formato compatível com C# ADO.NET
+if (connectionString.StartsWith("postgres://") || connectionString.StartsWith("postgresql://"))
+{
+    var databaseUri = new Uri(connectionString);
+    var userInfo = databaseUri.UserInfo.Split(':');
+    
+    connectionString = $"Host={databaseUri.Host};Port={(databaseUri.Port > 0 ? databaseUri.Port : 5432)};Database={databaseUri.AbsolutePath.TrimStart('/')};Username={userInfo[0]};Password={userInfo[1]};SSL Mode=Require;Trust Server Certificate=true;";
+}
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString, npgsqlOptions => 
     {
@@ -49,13 +58,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Ativa corretamente a política de CORS criada acima
 app.UseCors("AllowAll");
-
-// Removido o UseHttpsRedirection para evitar conflito com o proxy reverso do Render
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Cria o banco e as tabelas no Neon automaticamente ao iniciar, caso não existam
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.EnsureCreated();
+}
 
 app.Run();
