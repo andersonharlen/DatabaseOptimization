@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PerformanceService {
+  private readonly apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -14,10 +16,10 @@ export class PerformanceService {
       .set('size', size)
       .set('scenario', scenario);
     
-    return this.http.get('https://databaseoptimization.onrender.com/api/performance/benchmark', { params });
+    return this.http.get(`${this.apiUrl}/benchmark`, { params });
   }
 
   getDatabaseInfo(): Observable<any> {
-    return this.http.get('https://databaseoptimization.onrender.com/api/performance/database-info');
+    return this.http.get(`${this.apiUrl}/database-info`);
   }
 }
