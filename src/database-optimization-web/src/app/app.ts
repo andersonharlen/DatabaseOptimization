@@ -191,7 +191,7 @@ export class App {
   checkDatabase() {
     this.showDbModal = true;
     this.dbInfo = null;
-    this.http.get('http://localhost:5007/api/performance/database-info').subscribe({
+    this.http.get('https://databaseoptimization.onrender.com/api/performance/database-info').subscribe({
       next: (res: any) => {
         this.dbInfo = res;
         this.cdr.detectChanges();
