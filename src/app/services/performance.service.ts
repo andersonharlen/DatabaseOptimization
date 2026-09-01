@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PerformanceService {
-  private apiUrl = 'https://databaseoptimization.onrender.com/api/performance';
 
   constructor(private http: HttpClient) { }
 
@@ -15,10 +14,10 @@ export class PerformanceService {
       .set('size', size)
       .set('scenario', scenario);
     
-    return this.http.get(`${this.apiUrl}/benchmark`, { params });
+    return this.http.get('https://databaseoptimization.onrender.com/api/performance/benchmark', { params });
   }
 
   getDatabaseInfo(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/database-info`);
+    return this.http.get('https://databaseoptimization.onrender.com/api/performance/database-info');
   }
 }
