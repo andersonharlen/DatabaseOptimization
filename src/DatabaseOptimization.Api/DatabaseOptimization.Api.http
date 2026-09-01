@@ -1,4 +1,4 @@
-@DatabaseOptimization.Api_HostAddress = http://localhost:5007
+@DatabaseOptimization.Api_HostAddress = https://databaseoptimization.onrender.com
 
 GET {{DatabaseOptimization.Api_HostAddress}}/weatherforecast/
 Accept: application/json
