@@ -174,7 +174,7 @@ export class App {
 
   runBenchmark() {
     this.loading = true;
-    this.http.get(`http://localhost:5007/api/performance/benchmark?size=${this.selectedSize}&scenario=${this.selectedScenario}`).subscribe({
+    this.http.get(`https://databaseoptimization.onrender.com/api/performance/benchmark?size=${this.selectedSize}&scenario=${this.selectedScenario}`).subscribe({
       next: (res: any) => {
         this.result = res;
         this.loading = false;
