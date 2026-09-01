@@ -17,9 +17,22 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 
 // Configuração do DbContext apontando para o PostgreSQL
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql("Host=localhost;Port=5432;Database=performance_db;Username=postgres;Password=password123"));
+var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
 
+if (string.IsNullOrWhiteSpace(connectionString))
+{
+    connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
+                       ?? "Host=localhost;Port=5432;Database=performance_db;Username=postgres;Password=password123";
+}
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(connectionString, npgsqlOptions => 
+    {
+        npgsqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 5,
+            maxRetryDelay: TimeSpan.FromSeconds(10),
+            errorCodesToAdd: null);
+    }));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -31,7 +44,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowAngular");
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 
