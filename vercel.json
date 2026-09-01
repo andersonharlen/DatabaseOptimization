@@ -1,9 +1,14 @@
 {
   "version": 2,
-  "builds": [
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/database-optimization-web/browser",
+  "routes": [
     {
-      "src": "src/database-optimization-web/package.json",
-      "use": "@vercel/angular"
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/server.js"
     }
   ]
 }
