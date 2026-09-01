@@ -3,6 +3,10 @@ using DatabaseOptimization.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configuração obrigatória para o Render escutar a porta dinâmica da nuvem
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://*:{port}");
+
 // Adiciona política de CORS permissiva para aceitar requisições da Vercel e do ambiente local
 builder.Services.AddCors(options =>
 {
@@ -48,7 +52,7 @@ if (app.Environment.IsDevelopment())
 // Ativa corretamente a política de CORS criada acima
 app.UseCors("AllowAll");
 
-app.UseHttpsRedirection();
+// Removido o UseHttpsRedirection para evitar conflito com o proxy reverso do Render
 
 app.UseAuthorization();
 
