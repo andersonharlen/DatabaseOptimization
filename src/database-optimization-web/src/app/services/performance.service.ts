@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PerformanceService {
-  private apiUrl = 'http://localhost:5007/api/performance';
+  private apiUrl = 'https://databaseoptimization.onrender.com';
 
   constructor(private http: HttpClient) {}
 
