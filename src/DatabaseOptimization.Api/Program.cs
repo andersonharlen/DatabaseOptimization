@@ -3,14 +3,14 @@ using DatabaseOptimization.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Adiciona política de CORS para o Angular
+// Adiciona política de CORS permissiva para aceitar requisições da Vercel e do ambiente local
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngular", policy =>
+    options.AddPolicy("AllowAll", policy =>
     {
-        policy.WithOrigins("http://localhost:4200")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
     });
 });
 
@@ -33,6 +33,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
             maxRetryDelay: TimeSpan.FromSeconds(10),
             errorCodesToAdd: null);
     }));
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -44,6 +45,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Ativa corretamente a política de CORS criada acima
 app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
