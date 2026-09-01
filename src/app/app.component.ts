@@ -22,6 +22,7 @@ import { PerformanceService } from './services/performance.service';
           
           <div *ngIf="slowResult" style="margin-top: 15px; font-weight: bold;">
             Tempo: <span style="color: #c53030; font-size: 18px;">{{ slowResult.executionTimeMs }} ms</span>
+            <div style="font-size: 12px; color: #666; margin-top: 5px;">Plano: {{ slowResult.executionPlan }}</div>
           </div>
         </div>
 
@@ -35,6 +36,7 @@ import { PerformanceService } from './services/performance.service';
 
           <div *ngIf="optResult" style="margin-top: 15px; font-weight: bold;">
             Tempo: <span style="color: #276749; font-size: 18px;">{{ optResult.executionTimeMs }} ms</span>
+            <div style="font-size: 12px; color: #666; margin-top: 5px;">Plano: {{ optResult.executionPlan }}</div>
           </div>
         </div>
       </div>
@@ -52,15 +54,15 @@ export class AppComponent {
   testSlow() {
     this.loadingSlow = true;
     this.slowResult = null;
-    this.performanceService.runSlowQuery().subscribe({
+    this.performanceService.runBenchmark('1M', 'index').subscribe({
       next: (res) => {
-        this.slowResult = res;
+        this.slowResult = res.slow;
         this.loadingSlow = false;
       },
       error: (err) => {
         console.error(err);
         this.loadingSlow = false;
-        alert('Erro ao conectar com a API. Verifique se o backend está rodando.');
+        alert('Erro ao conectar com a API.');
       }
     });
   }
@@ -68,15 +70,15 @@ export class AppComponent {
   testOptimized() {
     this.loadingOpt = true;
     this.optResult = null;
-    this.performanceService.runOptimizedQuery().subscribe({
+    this.performanceService.runBenchmark('1M', 'index').subscribe({
       next: (res) => {
-        this.optResult = res;
+        this.optResult = res.optimized;
         this.loadingOpt = false;
       },
       error: (err) => {
         console.error(err);
         this.loadingOpt = false;
-        alert('Erro ao conectar com a API. Verifique se o backend está rodando.');
+        alert('Erro ao conectar com a API.');
       }
     });
   }
