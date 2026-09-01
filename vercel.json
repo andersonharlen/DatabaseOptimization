@@ -1,3 +1,9 @@
 {
-  "framework": "angular"
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/database-optimization-web/package.json",
+      "use": "@vercel/angular"
+    }
+  ]
 }
